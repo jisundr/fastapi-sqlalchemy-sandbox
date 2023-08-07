@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from dotenv import load_dotenv
 
 from app.database import SessionLocal
-from app.models import Tag, Dataset, TagCategory
+from app.models import Tag, Dataset, TagCategory, DatasetTag
 
 load_dotenv()
 current_dir_path = os.path.abspath(os.path.dirname(__file__))
@@ -66,16 +66,21 @@ class Seeder:
         ) as f:
             datasets = json.load(f)
 
-        for dataset in datasets:
+        for index, dataset in enumerate(datasets):
             try:
                 selected_tags = (
                     self.db.query(Tag).filter(Tag.name.in_(dataset["tags"])).all()
                 )
 
+                dataset_tags = [
+                    DatasetTag(tag_id=tag.id, is_filterable=index == 0)
+                    for tag in selected_tags
+                ]
+
                 db_dataset = Dataset(
                     name=dataset["name"],
                     description=dataset["description"],
-                    tags=selected_tags,
+                    dataset_tags=dataset_tags,
                 )
                 self.db.add(db_dataset)
                 self.db.commit()

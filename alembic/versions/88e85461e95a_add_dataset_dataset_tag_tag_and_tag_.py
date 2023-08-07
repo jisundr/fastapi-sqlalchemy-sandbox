@@ -1,8 +1,8 @@
-"""add dataset, dataset_tag, and tag tables
+"""add dataset, dataset_tag, tag and tag_category tables
 
-Revision ID: 0a8af51867ce
+Revision ID: 88e85461e95a
 Revises: 
-Create Date: 2023-08-07 15:03:13.860140+00:00
+Create Date: 2023-08-07 15:30:39.897327+00:00
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '0a8af51867ce'
+revision: str = '88e85461e95a'
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -53,6 +53,7 @@ def upgrade() -> None:
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('dataset_id', sa.Integer(), nullable=False),
     sa.Column('tag_id', sa.Integer(), nullable=False),
+    sa.Column('is_filterable', sa.Boolean(), nullable=False),
     sa.ForeignKeyConstraint(['dataset_id'], ['dataset.id'], ),
     sa.ForeignKeyConstraint(['tag_id'], ['tag.id'], ),
     sa.PrimaryKeyConstraint('id')

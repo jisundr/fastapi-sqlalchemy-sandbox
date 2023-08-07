@@ -12,10 +12,7 @@ class Tag(Base):
     name = Column(String, unique=True, index=True, nullable=False)
     category_id = Column(Integer, ForeignKey("tag_category.id"), nullable=False)
 
-    datasets = relationship(
-        "Dataset", secondary=DatasetTag.__tablename__, back_populates="tags"
-    )
-
+    dataset_tags = relationship("DatasetTag", back_populates="tag")
     tag_category = relationship("TagCategory", back_populates="tags")
 
     def __repr__(self):
