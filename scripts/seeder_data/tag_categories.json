@@ -1,0 +1,26 @@
+[
+    {
+        "name": "computer vision",
+        "description": "Tags related to image recognition and object classification.",
+        "hex_color": "#FF5733",
+        "rank": 1
+    },
+    {
+        "name": "machine learning",
+        "description": "Tags related to various machine learning techniques and applications.",
+        "hex_color": "#00A6ED",
+        "rank": 2
+    },
+    {
+        "name": "natural language processing",
+        "description": "Tags related to text analysis, sentiment analysis, and language processing.",
+        "hex_color": "#AED300",
+        "rank": 3
+    },
+    {
+        "name": "general",
+        "description": "General tags that apply across different domains.",
+        "hex_color": "#7E7E7E",
+        "rank": 4
+    }
+]

@@ -1,11 +1,38 @@
 [
-    "image recognition",
-    "digit classification",
-    "object classification",
-    "machine learning",
-    "text classification",
-    "sentiment analysis",
-    "natural language processing",
-    "survival prediction",
-    "feature analysis"
+    {
+        "name": "image recognition",
+        "category": "computer vision"
+    },
+    {
+        "name": "digit classification",
+        "category": "machine learning"
+    },
+    {
+        "name": "object classification",
+        "category": "computer vision"
+    },
+    {
+        "name": "machine learning",
+        "category": "general"
+    },
+    {
+        "name": "text classification",
+        "category": "natural language processing"
+    },
+    {
+        "name": "sentiment analysis",
+        "category": "natural language processing"
+    },
+    {
+        "name": "natural language processing",
+        "category": "general"
+    },
+    {
+        "name": "survival prediction",
+        "category": "machine learning"
+    },
+    {
+        "name": "feature analysis",
+        "category": "machine learning"
+    }
 ]

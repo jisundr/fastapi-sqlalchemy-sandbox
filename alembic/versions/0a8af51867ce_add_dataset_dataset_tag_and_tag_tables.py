@@ -1,8 +1,8 @@
 """add dataset, dataset_tag, and tag tables
 
-Revision ID: 720121707253
+Revision ID: 0a8af51867ce
 Revises: 
-Create Date: 2023-08-07 13:35:43.411452+00:00
+Create Date: 2023-08-07 15:03:13.860140+00:00
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '720121707253'
+revision: str = '0a8af51867ce'
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -31,9 +31,20 @@ def upgrade() -> None:
     op.create_index(op.f('ix_dataset_description'), 'dataset', ['description'], unique=False)
     op.create_index(op.f('ix_dataset_id'), 'dataset', ['id'], unique=False)
     op.create_index(op.f('ix_dataset_name'), 'dataset', ['name'], unique=True)
+    op.create_table('tag_category',
+    sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
+    sa.Column('name', sa.String(), nullable=False),
+    sa.Column('hex_color', sa.String(), nullable=False),
+    sa.Column('rank', sa.Integer(), nullable=False),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_index(op.f('ix_tag_category_id'), 'tag_category', ['id'], unique=False)
+    op.create_index(op.f('ix_tag_category_name'), 'tag_category', ['name'], unique=True)
     op.create_table('tag',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('name', sa.String(), nullable=False),
+    sa.Column('category_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['category_id'], ['tag_category.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index(op.f('ix_tag_id'), 'tag', ['id'], unique=False)
@@ -57,6 +68,9 @@ def downgrade() -> None:
     op.drop_index(op.f('ix_tag_name'), table_name='tag')
     op.drop_index(op.f('ix_tag_id'), table_name='tag')
     op.drop_table('tag')
+    op.drop_index(op.f('ix_tag_category_name'), table_name='tag_category')
+    op.drop_index(op.f('ix_tag_category_id'), table_name='tag_category')
+    op.drop_table('tag_category')
     op.drop_index(op.f('ix_dataset_name'), table_name='dataset')
     op.drop_index(op.f('ix_dataset_id'), table_name='dataset')
     op.drop_index(op.f('ix_dataset_description'), table_name='dataset')
