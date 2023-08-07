@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  db:
+    container_name: postgres
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: jisun.delosreyes@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: password
+    ports:
+      - 8080:80
+    volumes:
+      - ./pgadmin-data:/var/lib/pgadmin

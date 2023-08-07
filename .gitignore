@@ -173,4 +173,9 @@ poetry.toml
 # LSP config files
 pyrightconfig.json
 
+# Docker Data Folders
+postgres-data/
+pgadmin-data/
+
+
 # End of https://www.toptal.com/developers/gitignore/api/python
