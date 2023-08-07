@@ -1,0 +1,38 @@
+[
+    {
+        "name": "MNIST",
+        "description": "The MNIST dataset contains a large collection of handwritten digits, widely used for training image processing and machine learning algorithms.",
+        "tags": [
+            "image recognition",
+            "digit classification",
+            "machine learning"
+        ]
+    },
+    {
+        "name": "CIFAR-10",
+        "description": "The CIFAR-10 dataset consists of 60,000 32x32 color images in 10 different classes, used for object recognition and image classification tasks.",
+        "tags": [
+            "image recognition",
+            "object classification",
+            "machine learning"
+        ]
+    },
+    {
+        "name": "IMDB Movie Reviews",
+        "description": "The IMDB Movie Reviews dataset includes a collection of movie reviews labeled as positive or negative, commonly used for sentiment analysis and text classification.",
+        "tags": [
+            "text classification",
+            "sentiment analysis",
+            "natural language processing"
+        ]
+    },
+    {
+        "name": "Titanic Survival",
+        "description": "The Titanic Survival dataset contains information about passengers on the Titanic, used for predicting passenger survival based on various features.",
+        "tags": [
+            "survival prediction",
+            "feature analysis",
+            "machine learning"
+        ]
+    }
+]
